@@ -1,0 +1,89 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install git
+mkdir minikube
+cd minikube
+pwd
+ll
+git clone https://github.com/karoumbr/minikube.git
+
+sudo apt install curl
+
+./kubectl-install.sh
+kubectl version
+./minikube-install.sh
+minikube version
+cat kubectl-install.sh
+cat minikube-install.sh
+minikube
+minikube --help
+kubectl
+#création d'un premier cluster kubernetes à nœud unique en local avec minikube
+
+minikube start --help
+#installer docker
+sudo apt install apt-transport-https curl
+sudo apt install docker.io
+docker version
+#installation de kubernetes
+minikube start --driver=docker
+minikube config -h
+minikube status
+#manipulation du cluster kubernetes avec minikube et accès au dashboard kubernetes
+#liste des nœuds
+kubectl get nodes
+kubectl cluster-info
+#en cas de problèmes vois logs
+minikube logs
+#vérifier si minikube est à jour
+minikube update-check
+#lancer dashboard
+minikube dashboard
+#pour arrêter dashboard --> ctrl+C
+#déployer une application sur kubernetes
+minikube status
+#lancer cluster kubernetes s'il est arrêter
+minikube start --driver=docker
+#déployer une application (nginx) sur minikube
+kubectl run web --image=nginx:latest --port=80
+#vérifier pods
+kubectl get pods
+#exposer app web
+kubectl expose pod web --type=NodePort
+kubectl get svc
+minikube service web --url
+#copier adresse web et l'afficher dans un navigateur
+minikube dashboard
+#activer les extensions sur minikube
+minikube addons list
+#activer logviewer addon
+minikube addons enable logviewer
+kubectl get pod,svc -n kube-system
+#désactiver addon
+minikube addons disable logviewer
+#manipulation des nœuds au sein d'un cluster kubernetes avec minikube
+minikube node --help
+minikube node list
+#ajouter un nœud au cluster
+minikube node add worker1
+minikube node list
+#ajouter un deuxième nœud au cluster
+minikube node add worker2
+minikube node list
+minikube dashboard
+#arrêter nœud
+minikube node stop minikube-m02
+minikube node list
+#nettoyage et suppression d'un cluster avec minikube
+kubectl delete pod,svc --all
+kubectl get pod,svc
+minikube stop
+minikube status
+minikube delete
+minikube status
+
+
+
+
+
+
